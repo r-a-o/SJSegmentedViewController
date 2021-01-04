@@ -49,6 +49,11 @@ open class SJSegmentTab: UIView {
 		addConstraintsToView(view)
 	}
 
+    convenience init(buttonTitle:String, buttonImage:String) {
+        self.init(frame: CGRect.zero)
+        setButtonImage(buttonTitle, buttonImage)
+    }
+
 	required override public init(frame: CGRect) {
 		super.init(frame: frame)
 
@@ -98,6 +103,11 @@ open class SJSegmentTab: UIView {
 
 		button.titleLabel?.font = font
 	}
+
+    open func setButtonImage(_ buttonTitle:String, _ buttonImage:String) {
+        button.setTitle(buttonTitle, for: .normal)
+        button.setImage(UIImage(named: buttonImage), for: .normal)
+    }
 
 	@objc func onSegmentButtonPress(_ sender: AnyObject) {
 		let index = tag - kSegmentViewTagOffset
